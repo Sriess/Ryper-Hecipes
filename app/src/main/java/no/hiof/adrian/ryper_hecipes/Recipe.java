@@ -1,6 +1,5 @@
 package no.hiof.adrian.ryper_hecipes;
 
-import android.media.Image;
 
 /**
  * Created by adrian on 3/14/2015.
@@ -55,8 +54,9 @@ public class Recipe {
     public Recipe() {
         this.name = "Creativity";
         this.difficulty = 3;
-        this.description = "The most interesting result comes from within, from what we can create when our source of inspiration is our own creativity";
+        this.description = "The most interesting result comes from within. From what we can create when the only available source of inspiration is our own creativity";
         this.instructions = "Figure something out";
+        this.favorite = false;
     }
 
     @Override

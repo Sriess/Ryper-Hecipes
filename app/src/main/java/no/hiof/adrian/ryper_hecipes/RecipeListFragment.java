@@ -75,11 +75,12 @@ public class RecipeListFragment extends ListFragment {
 //                android.R.layout.simple_list_item_activated_1,
 //                android.R.id.text1,
 //                DummyContent.ITEMS));
-        RecipeListActivity.recipeAdapter = new ArrayAdapter<Recipe>(
+        RecipeListActivity.recipeAdapter = new ArrayAdapter<>(
                 getActivity(),
                 android.R.layout.simple_list_item_activated_1,
                 android.R.id.text1,
                 Content.ITEMS);
+        RecipeListActivity.recipeAdapter.setNotifyOnChange(true);
         setListAdapter(RecipeListActivity.recipeAdapter);
     }
 

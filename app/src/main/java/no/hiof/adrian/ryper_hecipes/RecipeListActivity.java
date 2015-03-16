@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.widget.ArrayAdapter;
 
-import com.google.gson.Gson;
 
 
 /**
@@ -47,6 +46,7 @@ public class RecipeListActivity extends FragmentActivity
         if(!Bourne){
             JsonTask Jason = new JsonTask();
             Jason.execute();
+            Content.contentLoadedYet(Bourne);
         }
 
         if (findViewById(R.id.recipe_detail_container) != null) {
@@ -62,7 +62,6 @@ public class RecipeListActivity extends FragmentActivity
                     .findFragmentById(R.id.recipe_list))
                     .setActivateOnItemClick(true);
         }
-
         // TODO: If exposing deep links into your app, handle intents here.
     }
 
@@ -90,7 +89,6 @@ public class RecipeListActivity extends FragmentActivity
             // for the selected item ID.
             Intent detailIntent = new Intent(RecipeListActivity.this, RecipeDetailActivity.class);
             detailIntent.putExtra(RecipeDetailFragment.ARG_ITEM_ID, id);
-            detailIntent.putExtra("hei", 1);
             startActivity(detailIntent);
         }
     }
@@ -100,13 +98,15 @@ public class RecipeListActivity extends FragmentActivity
      * @param toc
      */
     public static void JobDone(Recipe[] toc) {
-        for (int i = 0; i < toc.length; i++) {
-            Content.addNewRecipe(toc[i]);
 
-        }
         // By reading the ToC, our chef has now regained his identity
         // and is ready to pursue his true bliss:
         // as an up and coming culinary expert
-       Bourne = true;
+        Bourne = true;
+        Content.contentLoadedYet(Bourne);
+        for (Recipe aToc : toc) {
+            Content.addNewRecipe(aToc);
+
+        }
     }
 }

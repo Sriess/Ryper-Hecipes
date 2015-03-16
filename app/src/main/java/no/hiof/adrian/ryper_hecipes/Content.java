@@ -2,15 +2,14 @@ package no.hiof.adrian.ryper_hecipes;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by adrian on 3/14/2015.
  */
 public class Content {
 
-    public static List<Recipe> ITEMS = new ArrayList<Recipe>();
-
+    public static List<Recipe> ITEMS = new ArrayList<>();
+    public static Recipe defaultRecipe = new Recipe();
 
 
     public static void addNewRecipe(Recipe item){
@@ -36,5 +35,13 @@ public class Content {
     public static void updateData(Recipe item){
         RecipeListActivity.recipeAdapter.remove(item);
         RecipeListActivity.recipeAdapter.insert(item, item.key);
+    }
+
+    public static void contentLoadedYet(boolean loaded) {
+        if(!loaded && ITEMS.isEmpty()){
+            addNewRecipe(defaultRecipe);
+        }else if(loaded && ITEMS.contains(defaultRecipe)){
+            RecipeListActivity.recipeAdapter.remove(defaultRecipe);
+        }
     }
 }

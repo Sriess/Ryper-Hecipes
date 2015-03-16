@@ -61,7 +61,7 @@ public class RecipeDetailFragment extends Fragment {
             else container.setBackgroundColor(Color.GREEN);
             String fav = mItem.favorite?"Yes":"No";
             String how = mItem.instructions.length() > 1?mItem.instructions:" Who knows? ";
-            ((TextView) rootView.findViewById(R.id.recipe_detail)).setText(mItem.description +"\n"+"Favorite: "+fav+"\n\n"+"How to:"+how);
+            ((TextView) rootView.findViewById(R.id.recipe_detail)).setText(mItem.description +"\n"+"Favorite: "+fav+"\n\n"+"How to: "+how);
         }
 
         return rootView;

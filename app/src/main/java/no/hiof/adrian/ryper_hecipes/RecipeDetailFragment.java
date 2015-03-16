@@ -54,14 +54,23 @@ public class RecipeDetailFragment extends Fragment {
         // Show the content as text in a TextView. This is what the user actually sees, and should
         // therefore be improved further
         if (mItem != null) {
-            if(mItem.difficulty == 1)
-                container.setBackgroundColor(Color.BLUE);
-            else if(mItem.difficulty == 3)
-                container.setBackgroundColor(Color.RED);
-            else container.setBackgroundColor(Color.GREEN);
+            String diff;
+            if(mItem.difficulty == 1) {
+                container.setBackgroundColor(Color.parseColor("#FF8A65")); // Deep Orange 300
+                diff = "Simple";
+            }
+            else if(mItem.difficulty == 3) {
+                container.setBackgroundColor(Color.parseColor("#E64A19")); // Deep Orange 700
+                diff = "Medium";
+            }
+            else {
+                container.setBackgroundColor(Color.parseColor("#FF5722")); // Deep Orange 500
+                diff = "Advanced";
+            }
             String fav = mItem.favorite?"Yes":"No";
             String how = mItem.instructions.length() > 1?mItem.instructions:" Who knows? ";
-            ((TextView) rootView.findViewById(R.id.recipe_detail)).setText(mItem.description +"\n"+"Favorite: "+fav+"\n\n"+"How to: "+how);
+
+            ((TextView) rootView.findViewById(R.id.recipe_detail)).setText(mItem.description +"\n"+"Favorite: "+fav+"\n\n"+"Difficulty: "+diff+"\n"+"How to: "+how);
         }
 
         return rootView;
